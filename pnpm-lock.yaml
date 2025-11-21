@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@telemetryos/sdk':
-        specifier: 1.0.1
-        version: 1.0.1
+        specifier: latest
+        version: 1.4.3
       react:
         specifier: ^19.1.1
         version: 19.2.0
@@ -590,8 +590,8 @@ packages:
   '@telemetryos/root-sdk@1.4.3':
     resolution: {integrity: sha512-8/+x2n6MPkGTX7Kv2k2Omg6OrVbIhAoonpWc5qQcr9omx47gUwxhE9zlZgUNVLtPyBX/QLFBTimI0uZe+aegGg==}
 
-  '@telemetryos/sdk@1.0.1':
-    resolution: {integrity: sha512-0cy9hLKMbD8L7IAdok9t1Iw5w17kQtx6OJd3dCt5+828U/T97lJwUk0MGZ9rDPGt2eAt0Vm8H2SScoaKP4jelQ==}
+  '@telemetryos/sdk@1.4.3':
+    resolution: {integrity: sha512-esllPmzGzDiJpOgnLP/wXVFtyzyvt6BkPIbB4CSqefeL/cZ799lN6jlyg+/6QOf16+fqCmyUdk05W2QEqiUNBA==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1432,7 +1432,7 @@ snapshots:
     dependencies:
       zod: 3.25.76
 
-  '@telemetryos/sdk@1.0.1':
+  '@telemetryos/sdk@1.4.3':
     dependencies:
       '@telemetryos/root-sdk': 1.4.3
       zod: 3.25.76
