@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "A telemetryX application",
   "scripts": {
-    "dev": "tos serve"
+    "dev": "tos serve",
+    "build": "vite build"
   },
   "dependencies": {
     "@telemetryos/sdk": "1.0.1",
