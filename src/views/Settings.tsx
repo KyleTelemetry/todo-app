@@ -1,56 +1,58 @@
-import './Settings.css'
+import "./Settings.css";
 
-import { useEffect, useState } from 'react'
-import { store } from '@telemetryos/sdk'
+import { useEffect, useState } from "react";
+import { store } from "@telemetryos/sdk";
 
 interface Todo {
-  id: string
-  text: string
-  completed: boolean
-  createdAt: number
+  id: string;
+  text: string;
+  completed: boolean;
+  createdAt: number;
 }
 
 export function Settings() {
-  const [todoText, setTodoText] = useState('')
-  const [todos, setTodos] = useState<Todo[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [todoText, setTodoText] = useState("");
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const fetchTodosEffect = () => {
-    (async () => {
-      const existingTodos = await store().application.get('todos')
-      if (existingTodos && Array.isArray(existingTodos)) {
-        setTodos(existingTodos)
-      } else {
-        await store().application.set('todos', [])
-      }
-      setIsLoading(false)
-    })().catch(console.error)
-  }
+  const subscribeTodosEffect = () => {
+    store()
+      .application.subscribe("todos", (value) => {
+        if (value && Array.isArray(value)) {
+          setTodos(value);
+        } else if (value === null || value === undefined) {
+          setTodos([]);
+          store().application.set("todos", []).catch(console.error);
+        }
+        setIsLoading(false);
+      })
+      .catch(console.error);
+  };
 
-  useEffect(fetchTodosEffect, [])
+  useEffect(subscribeTodosEffect, []);
 
   const handleAddTodo = (event: React.FormEvent) => {
-    event.preventDefault()
-    if (!todoText.trim()) return
+    event.preventDefault();
+    if (!todoText.trim()) return;
 
     const newTodo: Todo = {
       id: Date.now().toString(),
       text: todoText,
       completed: false,
-      createdAt: Date.now()
-    }
+      createdAt: Date.now(),
+    };
 
-    const updatedTodos = [...todos, newTodo]
-    setTodos(updatedTodos)
-    store().application.set('todos', updatedTodos).catch(console.error)
-    setTodoText('')
-  }
+    const updatedTodos = [...todos, newTodo];
+    setTodos(updatedTodos);
+    store().application.set("todos", updatedTodos).catch(console.error);
+    setTodoText("");
+  };
 
   const handleDeleteTodo = (id: string) => {
-    const updatedTodos = todos.filter(todo => todo.id !== id)
-    setTodos(updatedTodos)
-    store().application.set('todos', updatedTodos).catch(console.error)
-  }
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+    store().application.set("todos", updatedTodos).catch(console.error);
+  };
 
   return (
     <div className="settings">
@@ -67,7 +69,11 @@ export function Settings() {
             placeholder="Enter todo text..."
           />
         </div>
-        <button type="submit" className="form-field-button" disabled={isLoading || !todoText.trim()}>
+        <button
+          type="submit"
+          className="form-field-button"
+          disabled={isLoading || !todoText.trim()}
+        >
           Add Todo
         </button>
       </form>
@@ -80,7 +86,13 @@ export function Settings() {
           <ul className="settings__todos">
             {todos.map((todo) => (
               <li key={todo.id} className="settings__todo-item">
-                <span className={todo.completed ? 'settings__todo-text--completed' : 'settings__todo-text'}>
+                <span
+                  className={
+                    todo.completed
+                      ? "settings__todo-text--completed"
+                      : "settings__todo-text"
+                  }
+                >
                   {todo.text}
                 </span>
                 <button
@@ -95,5 +107,5 @@ export function Settings() {
         )}
       </div>
     </div>
-  )
+  );
 }

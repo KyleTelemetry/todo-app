@@ -18,13 +18,6 @@ export function Render() {
         setTodos(value)
       }
     }).catch(console.error)
-
-    // Load initial todos
-    store().application.get('todos').then((value) => {
-      if (value && Array.isArray(value)) {
-        setTodos(value)
-      }
-    }).catch(console.error)
   }
   useEffect(subscribeTodosEffect, [])
 
