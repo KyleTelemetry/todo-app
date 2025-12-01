@@ -16,14 +16,18 @@ export function Settings() {
   const [isLoading, setIsLoading] = useState(true);
 
   const subscribeTodosEffect = () => {
+    console.log("Subscribing to todos in store...");
     store()
       .application.subscribe("todos", (value) => {
+        console.log("Received todos update from store:", value);
         if (value && Array.isArray(value)) {
           setTodos(value);
         } else if (value === null || value === undefined) {
+          console.log("No todos found in store, initializing empty list.");
           setTodos([]);
           store().application.set("todos", []).catch(console.error);
         }
+        console.log("Todos state updated:", todos);
         setIsLoading(false);
       })
       .catch(console.error);
