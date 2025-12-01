@@ -18,14 +18,14 @@ export function Settings() {
   const subscribeTodosEffect = () => {
     console.log("Subscribing to todos in store...");
     store()
-      .application.subscribe("todos", (value) => {
+      .instance.subscribe("todos", (value) => {
         console.log("Received todos update from store:", value);
         if (value && Array.isArray(value)) {
           setTodos(value);
         } else if (value === null || value === undefined) {
           console.log("No todos found in store, initializing empty list.");
           setTodos([]);
-          store().application.set("todos", []).catch(console.error);
+          store().instance.set("todos", []).catch(console.error);
         }
         console.log("Todos state updated:", todos);
         setIsLoading(false);
@@ -48,14 +48,14 @@ export function Settings() {
 
     const updatedTodos = [...todos, newTodo];
     setTodos(updatedTodos);
-    store().application.set("todos", updatedTodos).catch(console.error);
+    store().instance.set("todos", updatedTodos).catch(console.error);
     setTodoText("");
   };
 
   const handleDeleteTodo = (id: string) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
-    store().application.set("todos", updatedTodos).catch(console.error);
+    store().instance.set("todos", updatedTodos).catch(console.error);
   };
 
   return (

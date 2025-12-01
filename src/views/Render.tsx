@@ -1,32 +1,34 @@
-import './Render.css'
-import { useEffect, useState } from 'react'
-import { store } from '@telemetryos/sdk'
+import "./Render.css";
+import { useEffect, useState } from "react";
+import { store } from "@telemetryos/sdk";
 
 interface Todo {
-  id: string
-  text: string
-  completed: boolean
-  createdAt: number
+  id: string;
+  text: string;
+  completed: boolean;
+  createdAt: number;
 }
 
 export function Render() {
-  const [todos, setTodos] = useState<Todo[]>([])
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   const subscribeTodosEffect = () => {
-    store().application.subscribe('todos', (value) => {
-      if (value && Array.isArray(value)) {
-        setTodos(value)
-      }
-    }).catch(console.error)
-  }
-  useEffect(subscribeTodosEffect, [])
+    store()
+      .instance.subscribe("todos", (value) => {
+        if (value && Array.isArray(value)) {
+          setTodos(value);
+        }
+      })
+      .catch(console.error);
+  };
+  useEffect(subscribeTodosEffect, []);
 
   const toggleTodo = (id: string) => {
-    const updatedTodos = todos.map(todo =>
+    const updatedTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    )
-    store().application.set('todos', updatedTodos).catch(console.error)
-  }
+    );
+    store().instance.set("todos", updatedTodos).catch(console.error);
+  };
 
   return (
     <div className="render">
@@ -48,7 +50,13 @@ export function Render() {
                   onChange={() => toggleTodo(todo.id)}
                   className="render__todo-checkbox"
                 />
-                <span className={todo.completed ? 'render__todo-text--completed' : 'render__todo-text'}>
+                <span
+                  className={
+                    todo.completed
+                      ? "render__todo-text--completed"
+                      : "render__todo-text"
+                  }
+                >
                   {todo.text}
                 </span>
               </li>
@@ -57,5 +65,5 @@ export function Render() {
         )}
       </div>
     </div>
-  )
+  );
 }
