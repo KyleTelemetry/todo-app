@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@telemetryos/cli':
-        specifier: ^1.4.4
-        version: 1.4.4(@types/node@22.19.1)
+        specifier: latest
+        version: 1.5.0(@types/node@22.19.1)
       '@telemetryos/sdk':
-        specifier: 1.4.4
-        version: 1.4.4
+        specifier: latest
+        version: 1.5.0
       react:
         specifier: ^19.1.1
         version: 19.2.0
@@ -580,18 +580,18 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@telemetryos/cli@1.4.4':
-    resolution: {integrity: sha512-UHUA26osBfCIA+mv9SDR3arOYZBSS2g3cZAI74rB9Hp5gJw98pRVUbcerZPYJNJVgb1WQEEEzyLkb39JUu2eNQ==}
+  '@telemetryos/cli@1.5.0':
+    resolution: {integrity: sha512-GoC9e7DSJsKpI6/TW2ZG5KHrfLrmGwzw5dqoM3wbGGRz1iI5bQrRmZDiQDH4P//S6v7xZrQvFRWgSAqz7d1y3g==}
     hasBin: true
 
-  '@telemetryos/development-application-host-ui@1.4.4':
-    resolution: {integrity: sha512-j9tRYM9pQzYG2QAZlai46DeRffJ0cAddOklLBe8aKzT9EjoPSND0JQqJiKksRBqEZ+i/RWDX0DWtdI6OOKxCVg==}
+  '@telemetryos/development-application-host-ui@1.5.0':
+    resolution: {integrity: sha512-V1+yoGPO2USRfDDhmX/klvcsLOu1tbz/tjAMxYbpWUs300aLR5CDZpHL2GanO8rmdjdUzoxJ7Q0fp2r3imtGrA==}
 
-  '@telemetryos/root-sdk@1.4.4':
-    resolution: {integrity: sha512-j+KGdnOHzz0C3jDLMWgMHdJo7Ri9dL0gNJddLbZNn9iosAKD+1BeruD4LuDQuDTHeP/IgFjiP1UW0CmUTuNY1Q==}
+  '@telemetryos/root-sdk@1.5.0':
+    resolution: {integrity: sha512-7pMOn5V23POqfBIpO+D734lZT0v9KJQ4BKlPt+VttE+DFQ+aWhS1AXCMI0+i6O5suS+usN1MGwqkDDyQS2XFjw==}
 
-  '@telemetryos/sdk@1.4.4':
-    resolution: {integrity: sha512-PUBrzZcQDnI8wJRc3kbNbmqT2S1VgObaZCAqMU/0T6bJdg3nQ+BJWDu0EMhOyUAUrpaGU5XalfRsL/ULFUpqZQ==}
+  '@telemetryos/sdk@1.5.0':
+    resolution: {integrity: sha512-wtXgqLfwNOIRxyWR+J46en+tNdH9/1ixKqhkqOzJ9goKmGoiB5CeK/Ic42kbZPkr+o7Ry4hya8xkrIMJBjr87A==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1413,9 +1413,9 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.53.3':
     optional: true
 
-  '@telemetryos/cli@1.4.4(@types/node@22.19.1)':
+  '@telemetryos/cli@1.5.0(@types/node@22.19.1)':
     dependencies:
-      '@telemetryos/development-application-host-ui': 1.4.4
+      '@telemetryos/development-application-host-ui': 1.5.0
       '@types/serve-handler': 6.1.4
       commander: 14.0.2
       inquirer: 12.11.1(@types/node@22.19.1)
@@ -1424,21 +1424,21 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@telemetryos/development-application-host-ui@1.4.4':
+  '@telemetryos/development-application-host-ui@1.5.0':
     dependencies:
       '@hugeicons/core-free-icons': 1.2.1
       '@hugeicons/react': 1.1.1(react@19.2.0)
-      '@telemetryos/root-sdk': 1.4.4
+      '@telemetryos/root-sdk': 1.5.0
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@telemetryos/root-sdk@1.4.4':
+  '@telemetryos/root-sdk@1.5.0':
     dependencies:
       zod: 3.25.76
 
-  '@telemetryos/sdk@1.4.4':
+  '@telemetryos/sdk@1.5.0':
     dependencies:
-      '@telemetryos/root-sdk': 1.4.4
+      '@telemetryos/root-sdk': 1.5.0
       zod: 3.25.76
 
   '@types/babel__core@7.20.5':
